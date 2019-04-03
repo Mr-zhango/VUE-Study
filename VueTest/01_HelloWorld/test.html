@@ -16,18 +16,22 @@
   5. 理解vue的mvvm实现
 -->
 
-<!--模板-->
-<div id="test">
+<!--VUE双向绑定的例子-模板-->
+<!--给div加了一个id-->
+<div id="test"><!--MVVM中的view视图-->
   <input type="text" v-model="msg"><br><!--指令-->
   <input type="text" v-model="msg"><!--指令-->
   <p>hello {{msg}}</p><!--大括号表达式-->
 </div>
-
+<!--引入VUE使用的js文件-->
 <script type="text/javascript" src="../js/vue.js"></script>
+<!--我们自己写的js文件-->
 <script type="text/javascript">
-  const vm = new Vue({ // 配置对象 options
+  /*创建了一个VUE实例*/
+  const vm = new Vue({ // 传递进来了一个配置对象 options vm就是MVVM中的实例
     // 配置选项(option)
-    el: '#test',  // element: 指定用vue来管理页面中的哪个标签区域
+    el: '#test',  // el:element:元素选择器 指定用vue来管理页面中的哪个标签区域
+      // data就是数据 MVVM里面的m(model)
     data: {
       msg: 'atguigu'
     }
