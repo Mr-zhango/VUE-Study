@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
   <title>02_模板语法</title>
@@ -29,6 +29,7 @@
     @click='xxx'
 -->
 
+<h1>总结就是模板里面语法有两种方式:1.大括号表达式 2.指令 :href  @click</h1>
 <div id="app">
   <h2>1. 双大括号表达式</h2>
   <p>{{content}}</p>
@@ -37,26 +38,37 @@
   <h2>2. 指令一: 强制数据绑定</h2>
   <a href="url">访问指定站点</a><br>
   <a v-bind:href="url">访问指定站点2</a><br>
+  <!--v-bind可以省略-->
+  <!--:右边的就是一个表达式-->
   <a :href="url">访问指定站点2</a><br>
 
   <h2>3. 指令二: 绑定事件监听</h2>
   <button v-on:click="test">点我</button>
-  <button @click="test">点我</button>
+  <!--这里的@是和强制绑定的语法区分开,表示绑定监听-->
+  <button @click="test">点我触发点击的alert()事件</button>
+  <!--传递参数的写法-->
+  <button @click="test2(content)">点我传递参数</button>
+  <button @click="test2(url)">点我传递参数</button>
 
 </div>
 
-
+<!--引入VUE.js-->
 <script type="text/javascript" src="../js/vue.js"></script>
+<!--写js代码-->
 <script type="text/javascript">
   new Vue({
     el: '#app',
     data: {
       content: 'NBA I Love This Game',
-      url: 'http://www.atguigu.com'
+      url: 'https://www.myfreecloud.cn'
     },
+    /*写的是事件的回调函数,这里是点击事件的函数*/
     methods: {
       test () {
         alert('好啊!!!')
+      },
+      test2 (content) {
+        alert(content)
       }
     }
   })
