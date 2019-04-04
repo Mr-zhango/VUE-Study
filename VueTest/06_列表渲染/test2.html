@@ -38,20 +38,23 @@
         {name: 'Mary', age:16}
       ]
     },
-
+    // 计算属性
     computed: {
       filterPersons () {
 //        debugger
         // 取出相关数据
         const {searchName, persons, orderType} = this
+
+        // 对persons进行过滤
         let arr = [...persons]
         // 过滤数组
         if(searchName.trim()) {
+          // == -1 说明没有找到(不包含搜索的值)
           arr = persons.filter(p => p.name.indexOf(searchName)!==-1)
         }
-        // 排序
-        if(orderType) {
-          arr.sort(function (p1, p2) {
+        // 对数字进行排序操作
+        if(orderType !== 0 ) {
+          arr.sort(function (p1, p2) {  // 返回-数,p1在前,返回+数p2在前
             if(orderType===1) { // 降序
               return p2.age-p1.age
             } else { // 升序

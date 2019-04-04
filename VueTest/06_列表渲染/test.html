@@ -27,9 +27,12 @@
   <button @click="addP({name: 'xfzhang', age: 18})">添加</button>
 
   <h2>测试: v-for 遍历对象</h2>
-
+  <!-- v-for循环显示列表-->
+  <!--key:属性名称 item:属性值-->
   <ul>
-    <li v-for="(item, key) in persons[1]" :key="key">{{key}}={{item}}</li>
+    <li v-for="(value, key) in persons[1]" :key="key">
+      {{key}}={{value}}
+    </li>
   </ul>
 
 </div>
@@ -56,8 +59,9 @@
 
       updateP (index, newP) {
         console.log('updateP', index, newP)
-        // this.persons[index] = newP  // vue根本就不知道
-        this.persons.splice(index, 1, newP)
+        // this.persons[index] = newP  // 并没有改变Persons本身,而是改变变量所指向的内部的数据, vue根本就不知道
+        // 所以要调用数组内部的变异方法,让VUE知道数组元素改变了,去更新界面
+        this.persons.splice(index, 1, newP) //能实现增删改操作
         // this.persons = []
       },
 
