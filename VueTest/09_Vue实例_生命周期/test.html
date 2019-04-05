@@ -35,18 +35,20 @@
     data: {
       isShow: true
     },
-
+    /**初始化显示之后立即调用这个函数**/
     mounted () {
       // 执行异步任务
+      // 返回定时器的id,并且放到this中
       this.intervalId = setInterval(() => {
         console.log('-----')
         this.isShow = !this.isShow
       }, 1000)
     },
-
+    /*在死亡之前清除定时器*/
     beforeDestroy() {
       console.log('beforeDestroy()')
       // 执行收尾的工作
+      // 取出intervalId
       clearInterval(this.intervalId)
     },
 
