@@ -35,8 +35,10 @@
     <label for="pingpang">乒乓</label><br>
 
     <span>城市: </span>
+    <!--所有绑定提交的数据的都需要使用v-model属性-->
     <select v-model="cityId">
       <option value="">未选择</option>
+      <!--  v-for:VUE循环的写法-->
       <option :value="city.id" v-for="(city, index) in allCitys" :key="city.id">{{city.name}}</option>
     </select><br>
     <span>介绍: </span>
@@ -55,10 +57,12 @@
       pwd: '',
       sex: '男',
       likes: ['foot'],
-      allCitys: [{id: 1, name: 'BJ'}, {id: 2, name: 'SS'}, {id: 3, name: 'SZ'}],
-      cityId: '2',
+      allCitys: [{id: 1, name: 'BJ'}, {id: 2, name: 'SH'}, {id: 3, name: 'GZ'}, {id: 4, name: 'SZ'}],
+      /**初始化cityId**/
+      cityId: '',
       info: ''
     },
+    /**表单提交的事件**/
     methods: {
       handleSubmit () {
         console.log(this.username, this.pwd, this.sex, this.likes, this.cityId, this.info)
