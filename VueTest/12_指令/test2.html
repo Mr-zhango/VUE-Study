@@ -44,6 +44,7 @@
   // el: 指令所在的标签对象
   // binding: 包含指令相关数据的容器对象
   Vue.directive('upper-text', function (el, binding) {
+    /*字符转大写的一个方法*/
     console.log(el, binding)
     el.textContent = binding.value.toUpperCase()
   })
@@ -53,6 +54,8 @@
       msg: "I Like You"
     },
     // 注册局部指令
+    // directives:用来注册多个指令的关键字
+    // 注册局部指令:只再当前VM管理范围内有效
     directives: {
       'lower-text'(el, binding) {
         console.log(el, binding)

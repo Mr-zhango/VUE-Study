@@ -25,14 +25,17 @@
   <p>{{time}}</p>
   <p>最完整的: {{time | dateString}}</p>
   <p>年月日: {{time | dateString('YYYY-MM-DD')}}</p>
+  <p>时分秒: {{time | dateString('HH:mm:ss')}}</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript" src="https://cdn.bootcss.com/moment.js/2.22.1/moment.js"></script>
 <script>
-  // 定义过滤器
+  /*dateString进行日期格式化*/
+  // 定义过滤器                  /*ES6高级写法,形参默认值,写了的话传递这个,没有传的话就是用这个默认值*/
   Vue.filter('dateString', function (value, format='YYYY-MM-DD HH:mm:ss') {
 
+    /*调用moment.js里面的日期格式化的方法*/
     return moment(value).format(format);
   })
 
