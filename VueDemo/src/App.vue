@@ -1,3 +1,5 @@
+<!--这是一个根组件-->
+<!--先写vue页面的三个结构-->
 <template>
   <div>
     <div class="row">

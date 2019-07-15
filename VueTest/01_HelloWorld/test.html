@@ -23,11 +23,16 @@
   <input type="text" v-model="msg"><!--指令-->
   <p>hello {{msg}}</p><!--大括号表达式-->
 </div>
+
+
 <!--引入VUE使用的js文件-->
 <script type="text/javascript" src="../js/vue.js"></script>
+
+
 <!--我们自己写的js文件-->
 <script type="text/javascript">
-  /*创建了一个VUE实例*/
+
+  /*创建了一个VUE实例 VM*/
   const vm = new Vue({ // 传递进来了一个配置对象 options vm就是MVVM中的实例
     // 配置选项(option)
     el: '#test',  // el:element:元素选择器 指定用vue来管理页面中的哪个标签区域
@@ -36,6 +41,7 @@
       msg: 'atguigu'
     }
   })
+
 </script>
 </body>
 </html>

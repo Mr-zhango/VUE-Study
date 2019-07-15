@@ -1,4 +1,5 @@
 /*
+自定义的main.js
 入口JS
  */
 import Vue from 'vue'
