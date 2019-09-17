@@ -35,20 +35,30 @@
   <p>{{content}}</p>
   <p>{{content.toUpperCase()}}</p>
 
-  <h2>2. 指令一: 强制数据绑定</h2>
-  <a href="url">访问指定站点</a><br>
-  <a v-bind:href="url">访问指定站点2</a><br>
+  <h2>2. 指令一: 强制数据绑定 : </h2>
+  该写法不会生效,会当成html来解析
+  <img src="imageUrl">
+  <!--一下两个写法效果一样,一个是简化写法-->
+  <img v-bind:src="imageUrl">
+  <img :src="imageUrl">
   <!--v-bind可以省略-->
   <!--:右边的就是一个表达式-->
   <a :href="url">访问指定站点2</a><br>
 
-  <h2>3. 指令二: 绑定事件监听</h2>
-  <button v-on:click="test">点我</button>
+
+
+
+
+
+
+  <h2>3. 指令二: 绑定事件监听 @</h2>
+  <button v-on:click="test1">test1 点我</button>
   <!--这里的@是和强制绑定的语法区分开,表示绑定监听-->
-  <button @click="test">点我触发点击的alert()事件</button>
+  <button @click="test1">点我触发点击的alert()事件</button>
+
   <!--传递参数的写法-->
-  <button @click="test2(content)">点我传递参数</button>
-  <button @click="test2(url)">点我传递参数</button>
+  <button @click="test2(content)">点我传递参数:content</button>
+  <button @click="test2(url)">点我传递参数:url</button>
 
 </div>
 
@@ -60,12 +70,13 @@
     el: '#app',
     data: {
       content: 'NBA I Love This Game',
-      url: 'https://www.myfreecloud.cn'
+      url: 'https://www.myfreecloud.cn',
+      imageUrl: 'https://cn.vuejs.org/images/logo.png'
     },
     /*写的是事件的回调函数,这里是点击事件的函数*/
     methods: {
-      test () {
-        alert('好啊!!!')
+      test1 () {
+        alert('hello!!!')
       },
       test2 (content) {
         alert(content)

@@ -22,6 +22,7 @@
   <!--fullName1是根据fistName和lastName计算产生-->
   姓名1(单向): <input type="text" placeholder="Full Name1" v-model="fullName1"><br>
   姓名2(单向): <input type="text" placeholder="Full Name2" v-model="fullName2"><br>
+  <!--通过计算属性实现双向的效果-->
   姓名3(双向): <input type="text" placeholder="Full Name3" v-model="fullName3"><br>
 
   <p>{{fullName1}}</p>
@@ -40,19 +41,21 @@
 
     // 计算属性配置: 值为对象
     computed: {
+      //什么时候执行:初始化显示/相关的data属性发生变化的时候
       fullName1 () { // 属性的get()
         console.log('fullName1()', this)
         return this.firstName + '-' + this.lastName
       },
-
+      <!--通过计算属性实现双向的效果-->
+      /*固定有get和set方法*/
       fullName3: {
         // 当获取当前属性值时自动调用, 将返回值(根据相关的其它属性数据)作为属性值
         get () {
           console.log('fullName3 get()')
           return this.firstName + '-' + this.lastName
         },
-        // 当属性值发生了改变时自动调用, 监视当前属性值变化, 同步更新相关的其它属性值
-        set (value) {// fullName3的最新value值  A-B23
+        // get和set方法都是回调函数   当属性值发生了改变时自动调用, 监视当前属性值变化, 同步更新相关的其它属性值
+        set (value) {// value就是fullName3的最新value值  A-B23
           console.log('fullName3 set()', value)
           // 更新firstName和lastName
           const names = value.split('-')
@@ -61,11 +64,14 @@
         }
       }
     },
-
+    //监视属性
     watch: {
       // 配置监视firstName
-      firstName: function (value) { // 相当于属性的set
+      firstName: function (value) {
+        // 相当于属性的set
         console.log('watch firstName', value)
+
+        //this就是vue的实例对象 vm对象
         // 更新fullName2
         this.fullName2 = value + '-' + this.lastName
       }
@@ -75,7 +81,7 @@
   // 监视lastName
   vm.$watch('lastName', function (value) {
     console.log('$watch lastName', value)
-    // 更新fullName2
+    // 监视lastName变化就   更新fullName2
     this.fullName2 = this.firstName + '-' + value
   })
 

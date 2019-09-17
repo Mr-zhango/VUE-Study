@@ -18,10 +18,10 @@
 
 <!--VUE双向绑定的例子-模板-->
 <!--给div加了一个id-->
-<div id="test"><!--MVVM中的view视图-->
+<div id="app"><!--MVVM中的view视图-->
   <input type="text" v-model="msg"><br><!--指令-->
   <input type="text" v-model="msg"><!--指令-->
-  <p>hello {{msg}}</p><!--大括号表达式-->
+  <p>hello {{msg}}</p><!--显示数据使用 双大括号表达式-->
 </div>
 
 
@@ -35,7 +35,7 @@
   /*创建了一个VUE实例 VM*/
   const vm = new Vue({ // 传递进来了一个配置对象 options vm就是MVVM中的实例
     // 配置选项(option)
-    el: '#test',  // el:element:元素选择器 指定用vue来管理页面中的哪个标签区域
+    el: '#app',  // el:element:元素选择器 指定用vue来管理页面中的哪个标签区域
       // data就是数据 MVVM里面的m(model)
     data: {
       msg: 'atguigu'
