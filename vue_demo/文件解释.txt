@@ -1,0 +1,11 @@
+.babelrc:主要作用是ES6转ES5  还有就是jsx转js rc: runtimeControl 运行时控制
+
+.eslintignore:忽略eslint语法检查的文件
+
+
+.eslintrc.js
+
+index.html:页面主页
+
+
+package.json:打包时的配置文件
