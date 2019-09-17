@@ -11,7 +11,7 @@
     </header>
     <div class="container">
       <Add/>
-      <List/>
+      <List :comments="comments"/>
     </div>
   </div>
 </template>
@@ -21,6 +21,22 @@
   import List from './components/List.vue'
 
   export default {
+    data () {
+      return {
+        comments:[
+          {
+            name: 'BOB',
+            content: 'VUE,还不错哦'
+          },{
+            name: 'Cat',
+            content: 'VUE,just so so'
+          },{
+            name: 'Jack',
+            content: 'VUE,so easy'
+          }
+        ]
+      }
+    },
     components: {
       Add,
       List
