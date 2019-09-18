@@ -1,64 +1,55 @@
 <template>
-  <div>
-    <header class="site-header jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <h1>请发表对Vue的评论</h1>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="container">
-      <!-- 组件之间传递函数 -->
-      <Add :addComment="addComment"/>
-      <List :comments="comments" :deleteComment="deleteComment"/>
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <ToDoHeader :addTodo="addTodo"/>
+      <ToDoList :todos="todos"/>
+      <ToDoFooter/>
     </div>
   </div>
 </template>
 
 <script>
-  import Add from './components/Add.vue'
-  import List from './components/List.vue'
+  import ToDoHeader from './components/ToDoHeader'
+  import ToDoList from './components/ToDoList'
+  import ToDoFooter from './components/ToDoFooter'
 
   export default {
+
     data () {
       return {
-        comments:[
-          {
-            name: 'BOB',
-            content: 'VUE,还不错哦'
-          },{
-            name: 'Cat',
-            content: 'VUE,just so so'
-          },{
-            name: 'Jack',
-            content: 'VUE,so easy'
-          }
+        todos: [
+          {title: '吃饭', complete: false},
+          {title: '睡觉', complete: false},
+          {title: '打游戏', complete: true}
         ]
       }
     },
-
-    methods: {
-      // 添加评论
-      addComment(comment){
-        // unshift放在最前面
-        this.comments.unshift(comment)
-      },
-      // 刪除指定下标的评论
-      deleteComment(index){
-        this.comments.splice(index,1)
+    methods:{
+      addTodo(todo){
+        // 向todos中添加数据
+        // unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。
+        this.todos.unshift(todo)
       }
     },
-
-
     components: {
-      Add,
-      List
+      ToDoHeader,
+      ToDoList,
+      ToDoFooter
     }
   }
 </script>
 
 <style>
 
+  /*app*/
+  .todo-container {
+    width: 600px;
+    margin: 0 auto;
+  }
+
+  .todo-container .todo-wrap {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 </style>
