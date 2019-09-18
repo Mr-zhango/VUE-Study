@@ -10,8 +10,9 @@
       </div>
     </header>
     <div class="container">
-      <Add/>
-      <List :comments="comments"/>
+      <!-- 组件之间传递函数 -->
+      <Add :addComment="addComment"/>
+      <List :comments="comments" :deleteComment="deleteComment"/>
     </div>
   </div>
 </template>
@@ -37,6 +38,20 @@
         ]
       }
     },
+
+    methods: {
+      // 添加评论
+      addComment(comment){
+        // unshift放在最前面
+        this.comments.unshift(comment)
+      },
+      // 刪除指定下标的评论
+      deleteComment(index){
+        this.comments.splice(index,1)
+      }
+    },
+
+
     components: {
       Add,
       List
