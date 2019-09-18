@@ -6,13 +6,6 @@
     <p class="user"><span>{{comment.name}}</span><span>说:</span></p>
     <p class="centence">{{comment.content}}</p>
   </li>
-  <li class="list-group-item">
-    <div class="handle">
-      <a href="javascript:;">删除</a>
-    </div>
-    <p class="user"><span>yyy</span><span>说:</span></p>
-    <p class="centence">React有点难!</p>
-  </li>
 </template>
 
 <script>
@@ -20,8 +13,8 @@
     /*props: ['comment'],*/
 
     //指定了属性名和属性值的类型
-    props:{
-      comment:object
+    props: {
+      comment: Object
     }
   }
 </script>
