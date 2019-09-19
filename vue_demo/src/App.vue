@@ -24,14 +24,14 @@
   import ToDoHeader from './components/ToDoHeader'
   import ToDoList from './components/ToDoList'
   import ToDoFooter from './components/ToDoFooter'
-
+  import storageUtils from './util/storageUtils'
   export default {
 
     data () {
       // 从localStorage中读取数据
       return {
-        todos: JSON.parse(window.localStorage.getItem('todos_key') || '[]')
-
+        //todos: JSON.parse(window.localStorage.getItem('todos_key') || '[]')
+        todos: storageUtils.readTodos()
       }
     },
     computed: {
@@ -94,10 +94,13 @@
     watch:{ //深度监视,从文件中读取数据
       todos:{
         deep:true, // 深度监视
-        handler: function (newValue,oldValue) {
+        /*handler: function (newValue,oldValue) {
           // 将todos最新的JSON数据,保存到localStorage
-          window.localStorage.setItem('todos_key',JSON.stringify(newValue))
-        }
+          // window.localStorage.setItem('todos_key',JSON.stringify(newValue))
+          storageUtils.saveTodos(newValue)
+        }*/
+
+        handler:storageUtils.saveTodos
       }
 
     },

@@ -12,7 +12,7 @@
           <slot name="count"></slot>
         </span>
     <!--<button class="btn btn-danger" :style="{display: completeSize>0 ? 'block':'none'}" @click="deleteCompleteTodos">清除已完成任务</button>-->
-    delete<slot name="delete"></slot>
+    <slot name="delete"></slot>
   </div>
 </template>
 
