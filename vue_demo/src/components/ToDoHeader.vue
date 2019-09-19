@@ -32,8 +32,9 @@
           complete:false
         }
         // 3.添加到todos
-        this.addTodo(todo)
-
+        // this.addTodo(todo)
+        // $emit() 触发事件
+        this.$emit('addTodo', todo)
         // 4.清除输入
         this.title = ''
 

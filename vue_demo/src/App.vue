@@ -1,14 +1,21 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <ToDoHeader :addTodo="addTodo"/>
-      <ToDoList :todos="todos" :deleteTodo="deleteTodo"/>
+      <!--<ToDoHeader @addTodo="addTodo"/>--><!-- 给ToDoHeader标签对象绑定 addTodo的事件监听 -->
+      <ToDoHeader ref="header"/>
+      <ToDoList :todos="todos" />
       <ToDoFooter :todos="todos" :deleteCompleteTodos="deleteCompleteTodos" :selectAllTodos="selectAllTodos"/>
     </div>
   </div>
 </template>
 
+<!--
+  绑定事件监听:-- 订阅消息
+  触发事件:-- 发布消息
+-->
 <script>
+
+  import PubSub from 'pubsub-js'
   import ToDoHeader from './components/ToDoHeader'
   import ToDoList from './components/ToDoList'
   import ToDoFooter from './components/ToDoFooter'
@@ -16,19 +23,26 @@
   export default {
 
     data () {
-      /*return {
-        todos: [
-          {title: '吃饭', complete: false},
-          {title: '睡觉', complete: false},
-          {title: '打游戏', complete: true}
-        ]
-      }*/
       // 从localStorage中读取数据
       return {
         todos: JSON.parse(window.localStorage.getItem('todos_key') || '[]')
 
       }
     },
+
+    mounted(){
+      // 专门用来执行异步代码
+
+      // 给<ToDoHeader/> 绑定事件监听  然后得到这个函数
+      // this.$on('addTodo', this.addTodo) 这个事件监听绑定到app上了
+      this.$refs.header.$on('addTodo', this.addTodo)
+
+        // 订阅消息
+      PubSub.subscribe('deleteTodo',function (msg, data) {
+
+      })
+    },
+
     methods: {
       addTodo (todo) {
         // 向todos中添加数据
@@ -56,7 +70,6 @@
         handler: function (newValue,oldValue) {
           // 将todos最新的JSON数据,保存到localStorage
           window.localStorage.setItem('todos_key',JSON.stringify(newValue))
-          newValue
         }
       }
 
