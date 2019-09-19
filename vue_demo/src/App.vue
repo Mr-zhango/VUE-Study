@@ -37,9 +37,16 @@
       // this.$on('addTodo', this.addTodo) 这个事件监听绑定到app上了
       this.$refs.header.$on('addTodo', this.addTodo)
 
-        // 订阅消息
-      PubSub.subscribe('deleteTodo',function (msg, data) {
+      // 订阅消息 PubSub 消息订阅的重点是能够跨组件通信,没有位置的限制
+      /*
+      //有问题的写法,这个this是当前的回调函数,不是当前的this(组件对象)
+      PubSub.subscribe('deleteTodo',function (msg, index) {
+        this.deleteTodo(index)
+      })*/
 
+      PubSub.subscribe('deleteTodo',(msg, index) => {
+        // 表示当前函数自己没有this 使用外部的this
+        this.deleteTodo(index)
       })
     },
 
