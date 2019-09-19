@@ -4,7 +4,12 @@
       <!--<ToDoHeader @addTodo="addTodo"/>--><!-- 给ToDoHeader标签对象绑定 addTodo的事件监听 -->
       <ToDoHeader ref="header"/>
       <ToDoList :todos="todos" />
-      <ToDoFooter :todos="todos" :deleteCompleteTodos="deleteCompleteTodos" :selectAllTodos="selectAllTodos"/>
+
+      <ToDoFooter>
+        <input type="checkbox" v-model="isAllCheck" slot="checkAll"/>
+        <span slot="count">已完成{{completeSize}}</span> / 全部{{todos.length}}
+        <button class="btn btn-danger" :style="{display: completeSize>0 ? 'block':'none'}" @click="deleteCompleteTodos" slot="delete">清除已完成任务</button>
+      </ToDoFooter>
     </div>
   </div>
 </template>
@@ -29,7 +34,22 @@
 
       }
     },
+    computed: {
+      completeSize(){
+        // 最后一个0 表示初始的值是0
+        return this.todos.reduce((preTotal,todo) => preTotal + ((todo.complete) ? 1 :0) , 0  )
+      },
 
+
+      isAllCheck: {
+        get(){
+          return this.completeSize === this.todos.length && this.todos.length>0
+        },
+        set(value){ // value是当前checkbox最新的值
+          this.selectAllTodos(value)
+        }
+      }
+    },
     mounted(){
       // 专门用来执行异步代码
 

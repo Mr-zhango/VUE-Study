@@ -1,40 +1,24 @@
 <template>
   <div class="todo-footer">
     <label>
-      <input type="checkbox" v-model="isAllCheck"/>
+      <!--<input type="checkbox" v-model="isAllCheck"/>-->
+
+      <!--演示 slot 插槽组件的使用 -->
+      <slot name="checkAll"></slot>
+
     </label>
-    <span>
-          <span>已完成{{completeSize}}</span> / 全部{{todos.length}}
+        <span>
+         <!-- <span>已完成{{completeSize}}</span> / 全部{{todos.length}}-->
+          <slot name="count"></slot>
         </span>
-    <button class="btn btn-danger" :style="{display: completeSize>0 ? 'block':'none'}" @click="deleteCompleteTodos">清除已完成任务</button>
+    <!--<button class="btn btn-danger" :style="{display: completeSize>0 ? 'block':'none'}" @click="deleteCompleteTodos">清除已完成任务</button>-->
+    delete<slot name="delete"></slot>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'ToDoFooter',
-    props: {
-      todos: Array,
-      deleteCompleteTodos: Function,
-      /* 全选和反选 */
-      selectAllTodos: Function
-    },
-    computed: {
-      completeSize(){
-        // 最后一个0 表示初始的值是0
-        return this.todos.reduce((preTotal,todo) => preTotal + ((todo.complete) ? 1 :0) , 0  )
-      },
-
-
-      isAllCheck: {
-        get(){
-          return this.completeSize === this.todos.length && this.todos.length>0
-        },
-        set(value){ // value是当前checkbox最新的值
-          this.selectAllTodos(value)
-        }
-      }
-    }
+    name: 'ToDoFooter'
   }
 </script>
 
