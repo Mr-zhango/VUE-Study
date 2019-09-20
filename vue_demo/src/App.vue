@@ -1,18 +1,12 @@
 <template>
-  <div class="container">
-    <Search/>
-    <UsersMain/>
-  </div>
+  <div></div>
 </template>
 
 <script>
-  import Search from './components/Search'
-  import Main from './components/Main'
 
   export default {
     components: {
-      Search,
-      UsersMain: Main
+
     }
   }
 </script>
