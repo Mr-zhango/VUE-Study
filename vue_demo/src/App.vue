@@ -1,12 +1,15 @@
 <template>
-  <div></div>
+  <mt-button type="primary" @click.native="handleClick" style="width: 100%">Test Button</mt-button>
 </template>
 
 <script>
 
+  import {Toast} from 'mint-ui'
   export default {
-    components: {
-
+    methods: {
+      handleClick(){
+        Toast('提示信息')
+      }
     }
   }
 </script>
