@@ -20,7 +20,9 @@
         <div class="panel">
           <div class="panel-body">
             <!--显示当前组件-->
-              <router-view></router-view>
+            <keep-alive>
+              <router-view msg="msg"></router-view>
+            </keep-alive>
           </div>
         </div>
       </div>
