@@ -9,8 +9,10 @@
 <script>
   export default {
     name: 'News',
-    data(){
+    data () {
+      return {
 
+      }
     }
   }
 </script>
