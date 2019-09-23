@@ -8,6 +8,7 @@
         <button @click="replaceShow(m.id)">replace查看</button>
       </li>
     </ul>
+    <!-- 路由组件的方法 -->
     <button @click="$router.back()">回退</button>
     <hr>
     <router-view></router-view>
