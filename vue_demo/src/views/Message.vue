@@ -2,6 +2,7 @@
   <div>
     <ul>
       <li v-for="m in messages" :key="m.id">
+        <!-- 通过路径参数的方式向路由组件传递数据 param参数的形式 -->
         <router-link :to="`/home/message/detail/${m.id}`">{{m.title}}</router-link>
         <button @click="pushShow(m.id)">push查看</button>
         <button @click="replaceShow(m.id)">replace查看</button>

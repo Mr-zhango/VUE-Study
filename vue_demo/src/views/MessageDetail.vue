@@ -8,9 +8,15 @@
 
 <script>
   const messageDetails = [
-    {id: 1, title: 'Message001', content: 'message content00111....'},
-    {id: 3, title: 'Message003', content: 'message content00222....'},
-    {id: 5, title: 'Message005', content: 'message content00333....'}
+    {
+      id: 1, title: 'Message001', content: 'message content00111....'
+    },
+    {
+      id: 3, title: 'Message003', content: 'message content00222....'
+    },
+    {
+      id: 5, title: 'Message005', content: 'message content00333....'
+    }
   ]
   export default {
     data() {
@@ -23,6 +29,7 @@
       this.detail = messageDetails.find(detail => detail.id===id*1)
     },
 
+    /* 引入监视,挡页面参数改变的时候就改变数据 */
     watch: {
       $route: function () { // 改变当前路由组件参数数据时自动调用
         console.log('$route()')

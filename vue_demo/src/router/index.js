@@ -40,6 +40,8 @@ export default new VueRouter ({
           component: Message,
           children: [
             {
+
+              //path:'/home/message/detail/:id', 映射路由时候的站位写法
               path:'detail/:id',
               component: MessageDetail
             }
